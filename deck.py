@@ -1,4 +1,5 @@
 import random
+from display import Dialogues
 
 class Card:
     def __init__(self, suit, val):
@@ -9,7 +10,9 @@ class Card:
         self.offsuitVal = 0
 
     def show(self):
-        print("{} of {}".format(self.face, self.suit))
+        #print("{} of {}".format(self.face, self.suit))
+        display = Dialogues()
+        display.showCard(f"{self.face} of {self.suit}")
 
 
 class Deck:
@@ -36,13 +39,14 @@ class Deck:
             c.show()
 
     def shuffle(self, number):
+        display = Dialogues
         for n in range(1, number+1):
             for i in range(len(self.cards) - 1, 0, -1):
                 r = random.randint(0, i)
                 self.cards[i], self.cards[r] = self.cards[r], self.cards[i]
-            print(f"Shuffle {n}")
+            #print(f"Shuffle {n}")
+            display.shuffDiag(4, n)
 
 
     def drawCard(self):
         return self.cards.pop()
-
